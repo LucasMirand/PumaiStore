@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container'
+
+
 
 //Cuerpo de la tienda
 export function Cuerpo() {
@@ -11,13 +14,28 @@ export function Cuerpo() {
 
 //Relleno-Prueba
 export function Input() {
+  const [count, setCount] = useState(1)
+  const sumador = () =>{
+    if (count <10){
+    setCount(count +1);}
+  }
+  const restar = () => {
+    if (count > 1) setCount(count -1)
+  }
+  const agregar = () => {
+    console.log(`usted agregó ${count} items`)
+  }
+  
   return (
     <>
       <div className="Input">
-        <p>Hola soy input </p> 
-        <form action="">
-          <input type="email" name="" id="" />
-        </form>
+        <p>Contador </p> 
+        <Container>
+          <button onClick={sumador}>+</button>
+          <label>{count}</label>
+          <button onClick={restar}>-</button>
+        </Container>
+        <button onClick={agregar} >Agregar al carrito</button>
       </div>
     </>
   )
@@ -26,11 +44,9 @@ export function Input() {
 
 
 //Titulo de la Tienda
-export const Titulo=({nombre,titulo,mostrar,detalles}) => {
+export const Titulo=({titulo,mostrar}) => {
     //Pruebas en console.log
-    console.log(nombre);
     console.log(titulo);
-    console.log(detalles)
     mostrar()
     const styles = {
       color: 'green'

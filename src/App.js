@@ -1,23 +1,27 @@
+
 import './App.css';
 import NavBar from './componente/NabVar/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Titulo, Input, Cuerpo } from './componente/NabVar/contenedor/ItemListContainer';
+import { Titulo} from './componente/contenedor/ItemListContainer';
+import {ItemCount} from './componente/BtnCont/ItemCount'
 import Container from 'react-bootstrap/esm/Container';
 //import ComponenteConteiner from './componente/NabVar/contenedor/ComponenteContenedor';
 
 
 function App() {
+  //Titulo
   const titulo = 'Bienvenido a la Tienda';
-  //Ejemplos de prueba
-  const nombre='Lucas';
-  const detalles= {
-    edad:'26',
-    apellido:'Miranda'
-  }
-
   const mostrar=()=>{
     console.log('ESTO ES UN ARROW FUNCTION')
   }
+  //BTN-Contador
+  const stock = 8
+  const initial = 1
+  const agregar = (count) => {
+    console.log(`usted agregó ${count} items`)
+ 
+  }
+
   return (
     <div className="App">
       <div className="navbar">
@@ -26,14 +30,13 @@ function App() {
       <br></br>
       <Titulo
         titulo={titulo} 
-        nombre={nombre} 
-        detalles={detalles}
         mostrar={mostrar}
       />
       <Container>
-        <Input/>
-        <Cuerpo/>
-
+        <ItemCount 
+        stock={stock}
+        initial={initial}
+        agregar={agregar}/>
       </Container>
       
     </div>

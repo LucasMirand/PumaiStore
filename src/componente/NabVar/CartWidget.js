@@ -1,10 +1,10 @@
-import { GiCapitol } from "react-icons/gi";
+import { FaOpencart } from "react-icons/fa";
 
 export function IconNav() {
     return (
         <>
             <div>
-                <GiCapitol/>
+                <FaOpencart/>
             </div>
         </>
     )
