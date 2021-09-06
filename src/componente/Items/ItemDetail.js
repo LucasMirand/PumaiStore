@@ -1,11 +1,11 @@
 import React from "react"
 
-export const ItemDetail= (filtro) => {
-    console.log(filtro.category)
+export const ItemDetail= ({filtro}) => {
+    console.log(filtro.id)
     return (
         <>
         <p>{`Detalles producto ${filtro.id}: `} </p>
-        <li> {filtro.descrption} </li>
+        <li> {filtro.description} </li>
         </>
     )
   }
