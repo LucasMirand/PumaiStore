@@ -5,7 +5,7 @@ export const ItemList = ({items}) => {
    console.log(items)
     return (
         <ul>
-            {items.map((equipo)=> <li key={equipo.id}>{`${equipo.name} pts: ${equipo.puntos}`}</li>)}
+            {items.map((item)=> <li key={item.id}>{`${item.title} $: ${item.price}`}</li>)}
         </ul>
 
     )

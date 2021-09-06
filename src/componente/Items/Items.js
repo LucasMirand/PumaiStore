@@ -1,7 +1,7 @@
 import { ItemList } from "./ItemList";
 import React, { useState, useEffect } from 'react'
 
-
+/*
 const equipos = [
     { id:1, name:"river", puntos:30},
     { id:2, name:"boca", puntos:27},
@@ -18,14 +18,23 @@ let tarea = new Promise((res,rej) =>{
       res(equipos)
     }, 2000);
 })
+*/
 
 export const Items= () => {
     const [items, setItems] = useState([])
+    
     useEffect(() => {    
+      setTimeout(() => {
+        fetch('https://fakestoreapi.com/products')
+        .then(res=>res.json())
+        .then((resp)=> setItems(resp));
+      }, 2000);
+    /*
       tarea
       .then((resp)=> setItems(resp));
       console.log(items)
-    },)
+      */
+    },[])
    // console.log(equipos.map(equipo=>({id: equipo.id, nombre:equipo.name})));//.map genera otro array
     return (
       <div className="Items">
