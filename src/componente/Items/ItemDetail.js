@@ -1,12 +1,11 @@
 import React from "react"
 
-export const ItemDetail= ({filtro}) => {
-    console.log(filtro.id)
+export const ItemDetail= ({product}) => {
+    console.log(product)
     return (
         <>
-        <p>{`Detalles producto ${filtro.id}: `} </p>
-        <li> {filtro.description} </li>
+        <p>{`Detalles producto ${product}: `} </p>
+        <li> {product.title} </li>
         </>
     )
-  }
-  
+}

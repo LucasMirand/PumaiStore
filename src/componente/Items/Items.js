@@ -1,5 +1,5 @@
 import { ItemList } from "./ItemList";
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 /*
 const equipos = [
@@ -20,25 +20,21 @@ let tarea = new Promise((res,rej) =>{
 })
 */
 
-export const Items= () => {
-    const [items, setItems] = useState([])
-    
-    useEffect(() => {    
-      setTimeout(() => {
-        fetch('https://fakestoreapi.com/products')
-        .then(res=>res.json())
-        .then((resp)=> setItems(resp));
-      }, 2000);
+export const Items= ({items}) => {
+  
+  //console.log(category)
     /*
       tarea
       .then((resp)=> setItems(resp));
       console.log(items)
       */
-    },[])
+
    // console.log(equipos.map(equipo=>({id: equipo.id, nombre:equipo.name})));//.map genera otro array
     return (
+      
       <div className="Items">
-          <ItemList items={items}/>
+          {items.map((item)=> <ItemList item={item}/>)}
+          
       </div>
     )
   }

@@ -1,26 +1,47 @@
 //import { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import { Items } from '../Items/Items';
-
+import { useParams } from 'react-router-dom';
+import { tarea } from "../Util/Promesas";
+import React, { useState, useEffect } from 'react'
+//import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
 
 
 //Titulo de la Tienda
-export const Titulo=({titulo,mostrar}) => {
+export const ItemListContainer=({titulo,mostrar}) => {
     //Pruebas en console.log
-    console.log(titulo);
+    //console.log(titulo);
     mostrar()
     const styles = {
       color: 'green'
     }
+    //---------------------
+    const [items, setItems] = useState([])
+    const [loading, setLoading] = useState(true)
+    const {cat} = useParams();
+
+
+    useEffect(() => {
+          if(cat===undefined){
+            tarea
+            .then((resp)=> {
+              setItems(resp)
+              setLoading(false)})
+          } else {tarea
+            .then((resp)=> {
+              setItems(resp.filter(r => cat === r.category))
+              setLoading(false)})}
+              //guardar en el estado
+    }, [cat])
 
     return (    
       <>
         <Container>
-          <h1 style={styles}>{titulo}</h1>
+          <h1 style={styles} >{titulo}</h1>
         
         </Container>
         <Container>
-          <Items/>  
+        {loading ? <h2>Cargando Productos...</h2> : <Items items={items}/>}  
         
         </Container>
       </>
