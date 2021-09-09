@@ -10,15 +10,17 @@ function NavBar() {
     return (
       <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Link to='/'>
+            <Link className="nav-link" to='/'>
               <Navbar.Brand > Pumai Store</Navbar.Brand>          
             </Link>
             <Nav>
-              <Link to='/categoria/men'>
+              <Link className="nav-link" to='/categoria/men'>
                 <Nav>Hombre</Nav>
               </Link>
-              <Nav.Link href="#features">Hockey</Nav.Link>
-              <Link to='/contacto'>
+              <Link className="nav-link" to='/categoria/women'>
+                <Nav>Mujer</Nav>
+              </Link>
+              <Link className="nav-link" to='/contacto'>
                 <Nav >Contacto</Nav>
               </Link>
             </Nav>

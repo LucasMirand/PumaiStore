@@ -2,6 +2,8 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import './ItemList.css'
+
 export const ItemList = ({item}) => {
 
 //console.log(item)
@@ -11,7 +13,7 @@ export const ItemList = ({item}) => {
             <li key={item.id}>{`${item.title} $: ${item.price}`}</li>          
         </ul> */}
         
-      <Card key={item.id} style={{ width: '18rem' }}>
+      <Card  key={item.id} style={{ width: '18rem' }}>
         <Card.Img variant="top" src={item.image} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
@@ -26,6 +28,7 @@ export const ItemList = ({item}) => {
           </Link>
         </Card.Body>
       </Card>
+      
       </>
     )
 }

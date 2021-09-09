@@ -30,7 +30,8 @@ export const ItemListContainer=({titulo,mostrar}) => {
           } else {tarea
             .then((resp)=> {
               setItems(resp.filter(r => cat === r.category))
-              setLoading(false)})}
+              setLoading(false)
+            })}
               //guardar en el estado
     }, [cat])
 

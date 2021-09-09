@@ -1,28 +1,40 @@
-import { useState, useEffect } from 'react'
-//import { ItemDetail } from '../Items/ItemDetail'
+import React from 'react'
 import { useParams } from 'react-router-dom';
-import { tarea } from "../Util/Promesas";
-
-
-
+import { useState, useEffect } from 'react';
+import { tarea } from '../Util/Promesas';
+import { ItemDetail } from '../Items/ItemDetail';
 
 export const ItemDetailContainer = () => {
-    /*const {idp} = useParams();
-    const [state, setState] = useState([])
+
+  const {idp} = useParams();
+
+  let indice = parseInt(idp)
+  
+  const [loading, setLoading] = useState(true)
+  const [filtrado, setFiltrado] = useState({})
+//const [loading, setLoading] = useState(true)
+
+
+
     useEffect(() => {
-        if(idt===undefined){
-          tarea
-          .then((resp)=> {
-            setState(resp)})
-        } else {tarea
+          if(indice!==undefined){
+            tarea
             .then((resp)=> {
-              setState(resp.find(r => idt === r.id))
-        })}
-        console.log(state)             //guardar en el estado
-  }, [idp]) */
-//    console.log(hola)
-    //console.log(filtro)
-    return (
-        <></>
-    )
+              setFiltrado(resp.find(r => indice === r.id))
+              setLoading(false)
+              })} 
+              //guardar en el estado
+    }, [indice])
+    console.log(filtrado)
+
+  return (
+    <>
+     {loading ? <h2>Cargando Detalles...</h2> : <ItemDetail filtrado={filtrado}/>}
+    </>
+  )
 }
+
+
+
+
+

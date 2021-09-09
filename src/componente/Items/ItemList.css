@@ -1,0 +1,21 @@
+@media (min-width: 990px) {
+    .contenedor {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+        padding: 1rem;
+      
+      }
+}
+
+@media (min-width: 710px) and (max-width: 989px) {
+    .contenedor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+        padding: 1rem;
+      
+    }
+}
+
+

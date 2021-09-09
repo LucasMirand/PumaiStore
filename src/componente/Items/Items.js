@@ -1,6 +1,6 @@
 import { ItemList } from "./ItemList";
 import React from 'react'
-
+import './ItemList.css'
 /*
 const equipos = [
     { id:1, name:"river", puntos:30},
@@ -32,7 +32,7 @@ export const Items= ({items}) => {
    // console.log(equipos.map(equipo=>({id: equipo.id, nombre:equipo.name})));//.map genera otro array
     return (
       
-      <div className="Items">
+      <div className="Items contenedor">
           {items.map((item)=> <ItemList item={item}/>)}
           
       </div>
