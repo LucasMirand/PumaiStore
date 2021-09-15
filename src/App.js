@@ -8,6 +8,11 @@ import { ItemDetailContainer } from './componente/contenedor/ItemDetailContainer
 import Contacto from './componente/Contacto/Contacto';
 //import Container from 'react-bootstrap/esm/Container';
 //import ComponenteConteiner from './componente/NabVar/contenedor/ComponenteContenedor';
+//import {createContext} from 'react'
+import {AppContextProvider} from './componente/Context/appContext'
+import { Cart } from './componente/Cart/Cart';
+//import {createContext } from 'react'
+
 
 
 function App() {
@@ -17,25 +22,11 @@ function App() {
   const mostrar=()=>{
     console.log('ESTO ES UN ARROW FUNCTION')
   }
+
   //ITEM LIST CONTAINER----End------
-  
-  //BTN-Contador ---Start--------------
-  /*const stock = 8
-  const initial = 1
-  const agregar = (count) => {
-    console.log(`usted agregó ${count} items`)
- 
-  }*/
-//BTN-Contador ------end------------
-
-//ITEM List Detail ----Start
-//Filtro
-//  const idP = 4;
-
-//Item list Detal END
-
-
   return (
+    
+    <AppContextProvider>
     <Router>
       <div className="App">
         <div className="navbar">
@@ -58,15 +49,14 @@ function App() {
           <Route exact path='/producto/:idp'>
             <ItemDetailContainer/>
           </Route>
-          {/*<ItemCount 
-          stock={stock}
-          initial={initial}
-          agregar={agregar}/>*/}
+          <Route path='/cart'><Cart/> </Route>
+
  
         </Switch>
         { /* <Footer/> */}     
       </div>
     </Router>
+    </AppContextProvider>
   );
 }
 

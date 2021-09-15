@@ -11,7 +11,7 @@ function NavBar() {
       <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
             <Link className="nav-link" to='/'>
-              <Navbar.Brand > Pumai Store</Navbar.Brand>          
+              <Navbar.Brand>Pumai Store</Navbar.Brand>          
             </Link>
             <Nav>
               <Link className="nav-link" to='/categoria/men'>
@@ -21,11 +21,12 @@ function NavBar() {
                 <Nav>Mujer</Nav>
               </Link>
               <Link className="nav-link" to='/contacto'>
-                <Nav >Contacto</Nav>
+                <Nav>Contacto</Nav>
               </Link>
             </Nav>
-            <Navbar.Brand href="#home"> <IconNav/></Navbar.Brand>   
-            
+            <Link to='/cart'>
+              <Navbar.Brand href="#home"><IconNav/></Navbar.Brand>   
+            </Link>
           </Container>
       </Navbar>
     )

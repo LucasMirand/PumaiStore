@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Container from 'react-bootstrap/Container'
 //import Button from '@restart/ui/esm/Button';
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
 
-export function ItemCount({stock,initial,agregar}) {
+export function ItemCount({stock,initial,onAdd}) {
     const [count, setCount] = useState(initial)
+    const [boton, setBoton] = useState(false)
     const sumar = () =>{
       if (count <stock){
       setCount(count +1);}
@@ -13,22 +15,35 @@ export function ItemCount({stock,initial,agregar}) {
       if (count > 1) setCount(count -1)
     }
     const add =()=> {
-      agregar(count);
+      
+      onAdd(count);
       setCount(initial)
+      setBoton(true)
     }
     
     return (
       <>
         <div className="Input">
-          <p>Contador </p> 
+          <p>Cantidad </p> 
           <Container>
             <Button variant="primary" onClick={restar}>-</Button> {' '}
             <label>{count}</label>{' '}
             <Button variant="primary" onClick={sumar}>+</Button>
-            <div><Button variant="outline-success" onClick={add}>Agregar</Button></div>
+            {boton ? 
+                <div>
+                    <Link to='/cart'>
+                        <Button variant="success">Finalizar</Button>
+                    </Link>
+                    <Link to='/'>
+                        <Button variant="warning">Segir comprando</Button>
+                    </Link>
+                </div>
+            :
+             <Button variant="outline-success" onClick={add}>Agregar</Button>}
           </Container>
-          
         </div>
+
       </>
     )
   }
+

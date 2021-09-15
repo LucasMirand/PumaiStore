@@ -3,10 +3,13 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import './ItemList.css'
+//import { useAppContext } from '../Context/appContext'
+
 
 export const ItemList = ({item}) => {
 
-//console.log(item)
+  //const {producto} = useAppContext()
+  //console.log(producto)
     return (
         <>{/* 
         <ul>

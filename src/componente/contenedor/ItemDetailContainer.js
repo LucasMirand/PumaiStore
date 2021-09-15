@@ -12,7 +12,7 @@ export const ItemDetailContainer = () => {
   
   const [loading, setLoading] = useState(true)
   const [filtrado, setFiltrado] = useState({})
-//const [loading, setLoading] = useState(true)
+
 
 
 
