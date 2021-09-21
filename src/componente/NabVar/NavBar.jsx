@@ -4,9 +4,18 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import { IconNav } from './CartWidget'
 import {Link } from 'react-router-dom'
+import { useAppContext } from '../Context/appContext'
 
 
 function NavBar() {
+
+    const {iconCart, producto} = useAppContext()
+    let carrito = false
+
+    if (producto.length === 0){
+      carrito=true
+    }
+
     return (
       <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
@@ -24,9 +33,20 @@ function NavBar() {
                 <Nav>Contacto</Nav>
               </Link>
             </Nav>
-            <Link to='/cart'>
-              <Navbar.Brand href="#home"><IconNav/></Navbar.Brand>   
-            </Link>
+
+            {carrito ?
+            <>
+              <div></div>
+            </>:
+            <>
+                <Link to='/cart' className="icon-cart">
+                  <>{iconCart()}</>
+                  <Navbar.Brand href="#home"> <IconNav iconCart={iconCart()} /></Navbar.Brand>   
+                </Link>
+            </>}
+
+
+            
           </Container>
       </Navbar>
     )

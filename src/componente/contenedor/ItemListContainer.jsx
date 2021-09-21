@@ -3,12 +3,13 @@ import Container from 'react-bootstrap/Container'
 import { Items } from '../Items/Items';
 import { useParams } from 'react-router-dom';
 import { tarea } from "../Util/Promesas";
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
+import './ILC.css'
 //import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
-
+import { FaSpinner } from 'react-icons/fa';
 
 //Titulo de la Tienda
-export const ItemListContainer=({titulo,mostrar}) => {
+export const ItemListContainer= memo(({titulo,mostrar}) => {
     //Pruebas en console.log
     //console.log(titulo);
     mostrar()
@@ -42,12 +43,12 @@ export const ItemListContainer=({titulo,mostrar}) => {
         
         </Container>
         <Container>
-        {loading ? <h2>Cargando Productos...</h2> : <Items items={items}/>}  
+        {loading ? <><h2>Cargando productos</h2><FaSpinner icon="spinner" className="spinner"></FaSpinner> </> : <Items items={items}/>}  
         
         </Container>
       </>
     )
-}
+},(oldMostrar,newMostrar) => oldMostrar.mostrar() === newMostrar.mostrar())
 
 //EJEMPLOS EXTRAS
 

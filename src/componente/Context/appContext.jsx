@@ -23,7 +23,15 @@ export const AppContextProvider = ({children}) => {
     }
     const borrarProducto =(itemId)=> {
         const elimProd = producto.filter (prods => prods.item.id !== itemId )
-        setProducto(elimProd)
+        setProducto([...elimProd])
+    }
+
+    const precioTotal = () =>{
+        return producto.reduce((acum,valor) => acum + (valor.item.price* valor.quantity),0)
+    }
+
+    const iconCart =()=> {
+        return producto.reduce((acun,valor)=> acun + valor.quantity,0)
     }
     console.log(producto)
     return (
@@ -31,6 +39,8 @@ export const AppContextProvider = ({children}) => {
             producto, 
             agregarAlCarrito,
             borrarListado,
+            iconCart,
+            precioTotal,
             borrarProducto
         }}>
             {children}

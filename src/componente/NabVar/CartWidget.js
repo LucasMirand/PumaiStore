@@ -1,6 +1,7 @@
 import { FaOpencart } from "react-icons/fa";
 
-export function IconNav() {
+export function IconNav({iconCart}) {
+    console.log(iconCart)
     return (
         <>
             <div>

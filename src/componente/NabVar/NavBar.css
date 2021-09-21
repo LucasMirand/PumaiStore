@@ -3,3 +3,14 @@
     color: whitesmoke;
     padding: auto;
 }
+.icon-cart {
+    text-decoration: none;
+    color: whitesmoke;
+    display: flex;
+
+}
+.icon-cart:hover {
+    color:whitesmoke;
+    border-radius:2em;
+    background-color: thistle;
+}
