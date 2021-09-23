@@ -24,7 +24,7 @@ export const ItemDetail= ({filtrado}) => {
     return (
         <>
         <Card key={filtrado.id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={filtrado.image} />
+        <Card.Img variant="top" src={filtrado.imageId} />
         <Card.Body>
           <Card.Title>{filtrado.title}</Card.Title>
           <Card.Text>

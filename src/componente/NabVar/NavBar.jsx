@@ -23,10 +23,10 @@ function NavBar() {
               <Navbar.Brand>Pumai Store</Navbar.Brand>          
             </Link>
             <Nav>
-              <Link className="nav-link" to='/categoria/men'>
+              <Link className="nav-link" to='/categoria/remeras'>
                 <Nav>Hombre</Nav>
               </Link>
-              <Link className="nav-link" to='/categoria/women'>
+              <Link className="nav-link" to='/categoria/gorras'>
                 <Nav>Mujer</Nav>
               </Link>
               <Link className="nav-link" to='/contacto'>

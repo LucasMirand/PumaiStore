@@ -19,9 +19,7 @@ function App() {
   //ITEM LIST CONTAINER----START------
   //Titulo
   const titulo = 'Bienvenido a la Tienda';
-  const mostrar=()=>{
-    console.log('ESTO ES UN ARROW FUNCTION')
-  }
+
 
   //ITEM LIST CONTAINER----End------
   return (
@@ -37,13 +35,13 @@ function App() {
           <Route exact path='/'>
             {<ItemListContainer
               titulo={titulo} 
-              mostrar={mostrar}/>}
+              />}
           </Route>
           {/*-----------CATEGORIAS------------ */}
           <Route exact path='/categoria/:cat'>
             {<ItemListContainer
               titulo={titulo} 
-              mostrar={mostrar}/>}
+              />}
           </Route>
           <Route path='/contacto'><Contacto/> </Route>
           <Route exact path='/producto/:idp'>

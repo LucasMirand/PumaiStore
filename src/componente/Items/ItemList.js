@@ -1,37 +1,24 @@
-import React from 'react'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
+import { Items } from "./Items";
+import React, { memo } from 'react'
 import './ItemList.css'
-//import { useAppContext } from '../Context/appContext'
 
 
-export const ItemList = ({item}) => {
+export const ItemList= memo(({items}) => {
+  
+  //console.log(category)
+    /*
+      tarea
+      .then((resp)=> setItems(resp));
+      console.log(items)
+      */
 
-  //const {producto} = useAppContext()
-  //console.log(producto)
+   // console.log(equipos.map(equipo=>({id: equipo.id, nombre:equipo.name})));//.map genera otro array
     return (
-        <>{/* 
-        <ul>
-            <li key={item.id}>{`${item.title} $: ${item.price}`}</li>          
-        </ul> */}
-        
-      <Card  key={item.id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={item.image} />
-        <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
-          <Card.Text>
-            {item.detail}
-          </Card.Text>
-          <Card.Text>
-            {`$ ${item.price}`}
-          </Card.Text>
-          <Link to={`/producto/${item.id}`}>
-            <Button variant="primary">Agregar</Button>
-          </Link>
-        </Card.Body>
-      </Card>
       
-      </>
+      <div className="Items contenedor">
+          {items.map((item)=> <Items item={item}/>)}
+          
+      </div>
     )
-}
+  },(oldProps, newProps) => oldProps.items.length === newProps.items.length)
+  

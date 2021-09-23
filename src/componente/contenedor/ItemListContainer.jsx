@@ -1,27 +1,43 @@
-//import { useState } from 'react';
 import Container from 'react-bootstrap/Container'
-import { Items } from '../Items/Items';
-import { useParams } from 'react-router-dom';
-import { tarea } from "../Util/Promesas";
-import React, { useState, useEffect, memo } from 'react'
+import { ItemList } from '../Items/ItemList';
+import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
+//import { tarea } from "../Util/Promesas";
+import React, { useState, useEffect } from 'react'
 import './ILC.css'
-//import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
+//---import { useParams } from 'react-router-dom'; 
 import { FaSpinner } from 'react-icons/fa';
+import { getFirestore } from '../../service/getFirebase';
 
 //Titulo de la Tienda
-export const ItemListContainer= memo(({titulo,mostrar}) => {
-    //Pruebas en console.log
-    //console.log(titulo);
-    mostrar()
+export const ItemListContainer= ({titulo}) => {
+
+
     const styles = {
       color: 'green'
     }
-    //---------------------
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const {cat} = useParams();
 
+  useEffect(() => {
+      const db = getFirestore()
+      const queryDB = db.collection('items')
+      if (cat === undefined){queryDB.get()
+        .then(data=> {
+          setItems(data.docs.map(item => ({id: item.id,...item.data()})))
+          setLoading(false)
+        })}else{
+        queryDB.where('categoryId','==',cat).get()
+        .then(data=> {
+          setItems(data.docs.map(item => ({id: item.id,...item.data()})))
+          setLoading(false)
+          })
+        }        
+    },[cat])
 
+
+
+    /*
     useEffect(() => {
           if(cat===undefined){
             tarea
@@ -33,9 +49,8 @@ export const ItemListContainer= memo(({titulo,mostrar}) => {
               setItems(resp.filter(r => cat === r.category))
               setLoading(false)
             })}
-              //guardar en el estado
-    }, [cat])
-
+    }, [cat]) 
+    */
     return (    
       <>
         <Container>
@@ -43,12 +58,12 @@ export const ItemListContainer= memo(({titulo,mostrar}) => {
         
         </Container>
         <Container>
-        {loading ? <><h2>Cargando productos</h2><FaSpinner icon="spinner" className="spinner"></FaSpinner> </> : <Items items={items}/>}  
+        {loading ? <><h2>Cargando productos</h2><FaSpinner icon="spinner" className="spinner"></FaSpinner> </> : <ItemList items={items}/>}  
         
         </Container>
       </>
     )
-},(oldMostrar,newMostrar) => oldMostrar.mostrar() === newMostrar.mostrar())
+}
 
 //EJEMPLOS EXTRAS
 
