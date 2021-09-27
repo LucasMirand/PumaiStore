@@ -3,8 +3,7 @@ import { ItemList } from '../Items/ItemList';
 import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
 //import { tarea } from "../Util/Promesas";
 import React, { useState, useEffect } from 'react'
-import './ILC.css'
-//---import { useParams } from 'react-router-dom'; 
+import './ILC.css' 
 import { FaSpinner } from 'react-icons/fa';
 import { getFirestore } from '../../service/getFirebase';
 
@@ -18,23 +17,46 @@ export const ItemListContainer= ({titulo}) => {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const {cat} = useParams();
-
+/*
   useEffect(() => {
       const db = getFirestore()
       const queryDB = db.collection('items')
-      if (cat === undefined){queryDB.get()
+      if (cat === undefined){
+        queryDB.get()
         .then(data=> {
           setItems(data.docs.map(item => ({id: item.id,...item.data()})))
           setLoading(false)
-        })}else{
+        })
+      }else{
         queryDB.where('categoryId','==',cat).get()
         .then(data=> {
           setItems(data.docs.map(item => ({id: item.id,...item.data()})))
           setLoading(false)
-          })
-        }        
-    },[cat])
+          })          
+      }        
+  },[cat])
+*/
+  useEffect(()=> {
+    const db = getFirestore()
+    const queryDB = db.collection('items')
 
+    const conditionQuery = cat ?
+        queryDB.where('categoryId','==', cat)
+      :
+        queryDB
+
+    conditionQuery.get()
+    .then(data => {
+      if (data.size===0) {
+        console.log('Vacio')
+      }
+      setLoading(false)
+      setItems(data.docs.map(item => ({id: item.data().id, ...item.data()})))
+      console.log(cat)
+    })
+
+    
+  },[cat])
 
 
     /*
