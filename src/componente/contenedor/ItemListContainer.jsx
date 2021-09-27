@@ -22,17 +22,17 @@ export const ItemListContainer= ({titulo}) => {
   useEffect(() => {
       const db = getFirestore()
       const queryDB = db.collection('items')
-      if (cat === undefined){queryDB.get()
+      const cQuery = cat ?
+          queryDB.where('categoryId','==',cat)
+        :
+          queryDB
+
+      cQuery.get()
         .then(data=> {
+          if(data.size !== 0){
           setItems(data.docs.map(item => ({id: item.id,...item.data()})))
-          setLoading(false)
-        })}else{
-        queryDB.where('categoryId','==',cat).get()
-        .then(data=> {
-          setItems(data.docs.map(item => ({id: item.id,...item.data()})))
-          setLoading(false)
-          })
-        }        
+          setLoading(false)}
+        })              
     },[cat])
 
 
