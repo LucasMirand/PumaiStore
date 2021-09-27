@@ -21,6 +21,7 @@ export const ItemListContainer= ({titulo}) => {
   useEffect(() => {
       const db = getFirestore()
       const queryDB = db.collection('items')
+<<<<<<< HEAD
       if (cat === undefined){
         queryDB.get()
         .then(data=> {
@@ -29,8 +30,18 @@ export const ItemListContainer= ({titulo}) => {
         })
       }else{
         queryDB.where('categoryId','==',cat).get()
+=======
+      const cQuery = cat ?
+          queryDB.where('categoryId','==',cat)
+        :
+          queryDB
+
+      cQuery.get()
+>>>>>>> Class13
         .then(data=> {
+          if(data.size !== 0){
           setItems(data.docs.map(item => ({id: item.id,...item.data()})))
+<<<<<<< HEAD
           setLoading(false)
           })          
       }        
@@ -54,6 +65,11 @@ export const ItemListContainer= ({titulo}) => {
       setItems(data.docs.map(item => ({id: item.data().id, ...item.data()})))
       console.log(cat)
     })
+=======
+          setLoading(false)}
+        })              
+    },[cat])
+>>>>>>> Class13
 
     
   },[cat])
