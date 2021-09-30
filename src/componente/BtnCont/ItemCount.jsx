@@ -24,11 +24,9 @@ export function ItemCount({stock,initial,onAdd}) {
     return (
       <>
         <div className="Input">
-          <p>Cantidad </p> 
+           
           <Container>
-            <Button variant="primary" onClick={restar}>-</Button> {' '}
-            <label>{count}</label>{' '}
-            <Button variant="primary" onClick={sumar}>+</Button>
+            
             {boton ? 
                 <div>
                     <Link to='/cart'>
@@ -39,7 +37,14 @@ export function ItemCount({stock,initial,onAdd}) {
                     </Link>
                 </div>
             :
-             <Button variant="outline-success" onClick={add}>Agregar</Button>}
+              <div>
+                <p>Cantidad </p>
+                <Button variant="primary" onClick={restar}>-</Button> {' '}
+                <label>{count}</label>{' '}
+                <Button variant="primary" onClick={sumar}>+</Button>
+                <Button variant="outline-success" onClick={add}>Agregar</Button>
+              </div>
+             }
           </Container>
         </div>
 

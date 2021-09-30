@@ -1,0 +1,70 @@
+.producto-carrito {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        background-color: whitesmoke;
+
+}
+.img-carrito {
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+}
+.total {
+    font-weight: bold;
+    background-color: rgb(245, 193, 145);
+    border-radius: 8px ;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+/*----------FORMULARIO----------*/
+.btn-comprar {
+    background-color: #0eb113; /* Green */
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-comprar:hover {
+    background-color: #007c04; /* Green */
+    color: rgb(252, 252, 252);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+.input-form {
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+
+@media (min-width: 710px) {
+    .formulario {
+        width: 80%;
+        
+    }
+    
+}
+
+/*------------BOTONES OFF FORM-----*/
+
+.btn-cart { 
+    margin-top: 1rem;
+    align-items: flex-end;
+}
+.link {
+    text-decoration: none;
+    color: white;
+
+}
+.link:hover {
+    text-decoration:none;
+    color: whitesmoke;
+}

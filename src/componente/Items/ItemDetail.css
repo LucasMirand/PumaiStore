@@ -1,0 +1,4 @@
+.card-detail {
+    display: grid;
+    grid-template-columns: auto 2fr;
+}

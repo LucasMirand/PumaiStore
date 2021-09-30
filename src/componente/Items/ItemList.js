@@ -1,24 +1,19 @@
 import { Items } from "./Items";
-import React, { memo } from 'react'
+//import React, { memo } from 'react'
 import './ItemList.css'
+import Container from "react-bootstrap/esm/Container";
 
 
-export const ItemList= memo(({items}) => {
+export const ItemList= ({items}) => {
   
-  //console.log(category)
-    /*
-      tarea
-      .then((resp)=> setItems(resp));
-      console.log(items)
-      */
 
-   // console.log(equipos.map(equipo=>({id: equipo.id, nombre:equipo.name})));//.map genera otro array
     return (
-      
-      <div className="Items contenedor">
-          {items.map((item)=> <Items item={item}/>)}
-          
-      </div>
+      <Container>
+        <div className="Items contenedor">
+            {items.map((item)=> <Items key={item.id} item={item}/>)}
+            
+        </div>
+      </Container>
     )
-  },(oldProps, newProps) => oldProps.items.length === newProps.items.length)
+  }
   

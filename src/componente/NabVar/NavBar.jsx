@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container'
 import { IconNav } from './CartWidget'
 import {Link } from 'react-router-dom'
 import { useAppContext } from '../Context/appContext'
-
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 function NavBar() {
 
@@ -18,35 +19,47 @@ function NavBar() {
 
     return (
       <Navbar bg="dark" variant="dark" expand="lg">
-          <Container>
-            <Link className="nav-link" to='/'>
-              <Navbar.Brand>Pumai Store</Navbar.Brand>          
-            </Link>
-            <Nav>
-              <Link className="nav-link" to='/categoria/remeras'>
-                <Nav>Hombre</Nav>
+          <Container >
+          <div className="nav-container">
+            <div className="logo">
+              <Link className="nav-link" to='/'>
+                <Navbar.Brand>Pumai Store</Navbar.Brand>          
               </Link>
-              <Link className="nav-link" to='/categoria/gorras'>
-                <Nav>Mujer</Nav>
-              </Link>
-              <Link className="nav-link" to='/contacto'>
-                <Nav>Contacto</Nav>
-              </Link>
-            </Nav>
+            </div>
+            <div className='categorias'> 
+              <Nav >
+                <Row>                  
+                  <Col><Link className="nav-link" to='/categoria/men'>
+                    <Nav>Hombre</Nav>
+                  </Link></Col>
+                  <Col><Link className="nav-link" to='/categoria/electronics'>
+                    <Nav>Tecnologia</Nav>
+                  </Link></Col>
+                  <Col><Link className="nav-link" to='/categoria/jewelery'>
+                    <Nav>Joyeria</Nav>
+                  </Link></Col>
+                  <Col><Link className="nav-link" to='/categoria/women'>
+                    <Nav>Mujer</Nav>
+                  </Link></Col>
+                </Row>
+              </Nav>
+            </div>
+            <div className="iconoca">
+              {carrito ?
+              
+                  <div className="icon-cart">{""}</div>
+                :
+                <div className="icon-cart">
+                    <Link to='/cart' className="icon-cart">
+                      <>{iconCart()}</>
+                      <Navbar.Brand href="#home"> <IconNav iconCart={iconCart()} /></Navbar.Brand>   
+                    </Link>
+                
+                </div>
+              }
+            </div>
 
-            {carrito ?
-            <>
-              <div></div>
-            </>:
-            <>
-                <Link to='/cart' className="icon-cart">
-                  <>{iconCart()}</>
-                  <Navbar.Brand href="#home"> <IconNav iconCart={iconCart()} /></Navbar.Brand>   
-                </Link>
-            </>}
-
-
-            
+          </div>
           </Container>
       </Navbar>
     )

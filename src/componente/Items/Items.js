@@ -16,18 +16,18 @@ export const Items = ({item}) => {
             <li key={item.id}>{`${item.title} $: ${item.price}`}</li>          
         </ul> */}
         
-      <Card  key={item.id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={item.imageId} />
+      <Card className='card-items'  >
+        <Card.Img variant="top" src={item.imageId} style={{ height: '70%' }} />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>
             {item.detail}
           </Card.Text>
-          <Card.Text>
-            {`$ ${item.price}`}
+          <Card.Text style={{textAlign: 'center'}}>
+            {`Precio: $ ${item.price}`}
           </Card.Text>
           <Link to={`/producto/${item.id}`}>
-            <Button variant="primary">Agregar</Button>
+            <Button className='btn-agregar' variant="primary">Agregar</Button>
           </Link>
         </Card.Body>
       </Card>

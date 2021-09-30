@@ -12,10 +12,29 @@
     .contenedor {
         display: grid;
         grid-template-columns: 1fr 1fr;
+
         grid-gap: 1rem;
         padding: 1rem;
       
     }
 }
 
+@media (max-width: 709px) {
+    .contenedor {display: flex;
+    align-items: center;
+    flex-direction: column;
+    }
+    .card-items{
+        margin-top: 2rem;
+    }
+}
 
+.card-items{
+    width: 18rem;
+    height: 35rem;
+}
+
+.btn-agregar {
+    width: 100%;
+    
+}

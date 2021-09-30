@@ -9,11 +9,11 @@ export const AppContextProvider = ({children}) => {
     const [producto, setProducto] = useState([])
    
     function agregarAlCarrito(prod, cant){
-        if(producto.find(prods => prods.item.id === prod.id)){
+        if(producto.find(prods => prods.item.title === prod.title)){
          alert('ya agregaste éste producto al carrito');
          const updateCart = [...producto]
          updateCart.forEach((prods) =>{
-             if(prods.item.id === prod.id){prods.quantity += cant}
+             if(prods.item.title === prod.title){prods.quantity += cant}
          })
         } else setProducto([...producto, {item: prod, quantity: cant}])
     }
@@ -33,7 +33,7 @@ export const AppContextProvider = ({children}) => {
     const iconCart =()=> {
         return producto.reduce((acun,valor)=> acun + valor.quantity,0)
     }
-    console.log(producto)
+
     return (
         <AppContext.Provider value={{
             producto, 

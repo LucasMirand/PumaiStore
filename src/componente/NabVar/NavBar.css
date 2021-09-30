@@ -14,3 +14,30 @@
     border-radius:2em;
     background-color: thistle;
 }
+
+
+
+.nav-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+@media (max-width: 990px) {
+    .logo {grid-area: logo;}
+    .categorias{grid-area: categorias;
+    
+    }
+    .icon-cart{grid-area: iconcart;}
+    .nav-container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-auto-rows: auto;
+        grid-template-areas: 
+        'logo logo iconcart'
+        'categorias categorias categorias';
+    }
+
+}
+
+
+

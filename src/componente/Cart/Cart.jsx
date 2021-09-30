@@ -1,110 +1,56 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import Container from 'react-bootstrap/esm/Container'
+import Image from 'react-bootstrap/Image'
 import { useAppContext } from '../Context/appContext'
 import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-import { getFirestore } from '../../service/getFirebase'
-import firebase from 'firebase'
-
+import './Cart.css'
+import { CartForm } from './CartForm'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 
 export const Cart = () => {
 
-
-
     const {producto,borrarListado,borrarProducto,precioTotal} = useAppContext()
-    const [form, setForm] = useState(initialState)
-
-    //    console.log(producto.length)
 
     let carritoLleno = false
 
     if (producto.length === 0){
         carritoLleno=true
     }
-    //    console.log(carritoLleno)
-
-    function handleChange(e) {        
-            
-        setForm(
-            {
-                ...form,
-                [e.target.name]: e.target.value
-            }
-        )
-    }
-    function handleSubmit(e){
-        e.preventDefault()
-        const newOrder={
-            buyer: form,
-            items: producto,
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: precioTotal()
-        }
-        console.log(newOrder)
-
-
-        const db = getFirestore()
-        const orders = db.collection('orders')
-
-        //controlar si hay los productos que quiero agregar 
-        orders.add(newOrder)
-        .then(resp => alert(`GRACIAS POR SU COMPRA! La orden de compra es: ${resp.id}`))
-
-        .finally(()=>{
-            setForm(initialState)
-            borrarListado()
-        })
-
-
-    }
-    
-        
-        
-        /*
-        db.collection('items').doc('idDelProd')
-        .update({
-            stock: stock-1
-        })
-        .then(res => console.log(res)) */
-    
+ 
 
     return (
         <Container>
             
-        <div>
+        <div className='carrito'>
             <h2>Carrito de Compras</h2>
+            <ListGroup variant='flush'>
             {producto.map((prod)=> 
-            <div >
-                <div>{prod.item.title} x {prod.quantity}</div>
-                <div>precio: $ {prod.item.price*prod.quantity}</div>
-                <Button onClick={()=>borrarProducto(prod.item.id)}>Remover Producto </Button>
-
-            </div>)}
-            
+                <ListGroup.Item className='producto-carrito' key={prod.id} >
+                    <Image className='img-carrito' src={prod.item.imageId} rounded />
+                    <div>
+                        <h4>{prod.item.title} </h4>
+                        <p>Cant: {prod.quantity} / Precio: $ {prod.item.price*prod.quantity}</p>
+                        <p></p>                        
+                    </div>
+                    <Button onClick={()=>borrarProducto(prod.item.id)} variant='danger' style={{height:'3rem'}}> X </Button>
+                </ListGroup.Item>)}
+            </ListGroup>
         </div>
         {carritoLleno ?
         <>
         <h3>Ooops! El carrito esta vacío</h3>
-        <Link to='/'><Button>Volver a la tienda</Button></Link>
+        <Link to='/'><Button variant='success'>Volver a la tienda</Button></Link>
         </>:
         <>
-            <div>Total: $ {precioTotal()}</div>
-        
-            <form 
-                onSubmit={handleSubmit}
-                onChange={handleChange}
-            >
-                <input type="text"  placeholder="ing nombre" name="nombre" value={form.nombre}/>
-                <input type="text"  placeholder="ing tel" name="tel" value={form.tel} />
-                <input type="email" placeholder="ing email" name="email" value={form.email} />
-                <input type="email" placeholder="confirme el mail" name="email2" />
-                <button >Realizar compra</button>
-                
-            </form>
+            <p className='total'>Total: $ {precioTotal()}</p>
 
-        <Link to='/'><Button>Volver a la tienda</Button></Link>
-        <Button onClick={borrarListado}>Borrar Carrito</Button>
+            <CartForm/>
+            <div className='btn-cart'>
+                <Button variant='success'><Link className='link' to='/'>Volver a la tienda</Link></Button>
+                <Button variant='danger' onClick={borrarListado}>Borrar Carrito</Button>
+            </div>
         </>}
 
 
@@ -112,9 +58,3 @@ export const Cart = () => {
     )
 };
 
-
-const initialState = {
-    nombre: '',
-    email:'',
-    tel:''
-}

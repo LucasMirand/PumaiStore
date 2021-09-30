@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container'
 import { ItemList } from '../Items/ItemList';
 import { useParams } from 'react-router-dom'; //Permite capturar Variables dinamicas
-//import { tarea } from "../Util/Promesas";
 import React, { useState, useEffect } from 'react'
 import './ILC.css' 
 import { FaSpinner } from 'react-icons/fa';
@@ -35,20 +34,7 @@ export const ItemListContainer= ({titulo}) => {
     },[cat])
 
 
-    /*
-    useEffect(() => {
-          if(cat===undefined){
-            tarea
-            .then((resp)=> {
-              setItems(resp)
-              setLoading(false)})
-          } else {tarea
-            .then((resp)=> {
-              setItems(resp.filter(r => cat === r.category))
-              setLoading(false)
-            })}
-    }, [cat]) 
-    */
+
     return (    
       <>
         <Container>
