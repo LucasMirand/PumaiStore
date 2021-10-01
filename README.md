@@ -1,13 +1,12 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Netlify repository
 
 Open [Netlify](https://reverent-cray-c10e1a.netlify.app/) to view it in the browser.
 
-## Available Scripts
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
 
 In the project directory, you can run:
 
