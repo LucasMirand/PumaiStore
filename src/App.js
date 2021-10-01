@@ -4,7 +4,7 @@ import NavBar from './componente/NabVar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {ItemListContainer} from './componente/contenedor/ItemListContainer';
 import { ItemDetailContainer } from './componente/contenedor/ItemDetailContainer';
-import Contacto from './componente/Contacto/Contacto';
+
 import {AppContextProvider} from './componente/Context/appContext'
 import { Cart } from './componente/Cart/Cart';
 
@@ -39,7 +39,7 @@ function App() {
               titulo={titulo} 
               />}
           </Route>
-          <Route path='/contacto'><Contacto/> </Route>
+          
           <Route exact path='/producto/:idp'>
             <ItemDetailContainer/>
           </Route>

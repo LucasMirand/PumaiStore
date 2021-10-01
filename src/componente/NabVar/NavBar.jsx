@@ -10,12 +10,8 @@ import Row from 'react-bootstrap/Row'
 
 function NavBar() {
 
-    const {iconCart, producto} = useAppContext()
-    let carrito = false
+    const {iconCart} = useAppContext()
 
-    if (producto.length === 0){
-      carrito=true
-    }
 
     return (
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -45,20 +41,13 @@ function NavBar() {
               </Nav>
             </div>
             <div className="iconoca">
-              {carrito ?
-              
-                  <div className="icon-cart">{""}</div>
-                :
-                <div className="icon-cart">
+                <div>
                     <Link to='/cart' className="icon-cart">
                       <>{iconCart()}</>
-                      <Navbar.Brand href="#home"> <IconNav iconCart={iconCart()} /></Navbar.Brand>   
-                    </Link>
-                
-                </div>
-              }
+                      <Navbar.Brand> <IconNav iconCart={iconCart()} /></Navbar.Brand>   
+                    </Link>                
+                </div>              
             </div>
-
           </div>
           </Container>
       </Navbar>

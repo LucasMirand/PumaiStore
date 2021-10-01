@@ -17,7 +17,7 @@ export const Items = ({item}) => {
         </ul> */}
         
       <Card className='card-items'  >
-        <Card.Img variant="top" src={item.imageId} style={{ height: '70%' }} />
+        <Card.Img variant="top" src={item.imageId} style={{ height: '70%' }} className='img-card' />
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>

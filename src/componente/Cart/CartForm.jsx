@@ -55,7 +55,7 @@ export const CartForm = () => {
                     <input className='input-form' type="text"  placeholder="ing nombre" name="nombre" value={form.nombre}/>
                     <input className='input-form' type="number"  placeholder="ing tel" name="tel" value={form.tel} />
                     <input className='input-form' type="email" placeholder="ing email" name="email" value={form.email} />
-                    <input className='input-form' type="email" placeholder="confirme el mail" name="email2" />
+                    <input className='input-form' type="email" placeholder="confirme el mail" name="email2" value={form.email2} />
                     <button className='btn-comprar'>Realizar compra</button>
                     
                 </form>
